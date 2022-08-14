@@ -1,0 +1,140 @@
+<html>
+
+<head>
+  <title>Add Painting - Red Belt</title>
+  <link href="../static/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- LEFT TITLE -->
+
+    <!-- BUTTON BLOCK -->
+    <div class="row">
+
+      <!-- STYLE REPORT BUTTON TO RIGHT -->
+
+      <div style="display: flex; flex:1; gap: 30px; justify-content: end;">
+        <a href="/paintings">
+          Dashboard
+        </a>
+        <!-- LOGOUT BUTTON -->
+        <a href="/logout">
+          <input type="button" value="Logout">
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- BODY CONTAINER -->
+  <!-- TITLE -->
+  <h1>Add a Painting</h1>
+
+  <form class="row" method="post" action="/add_painting">
+
+    <div class="grid-container">
+
+      <div class="two">
+
+        {% with messages = get_flashed_messages(category_filter=["title"]) %}
+        {% if messages %}
+
+        <ul class="flash">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+      </div>
+
+
+      <div class="one">
+        <label for="title">Title</label>
+      </div>
+
+      <div class="two">
+        {% if data %}
+        <input type="text" id="title" name="title" value="{{ data['title'] }}"><br>
+        {% else %}
+        <input type="text" id="title" name="title"><br>
+        {% endif %}
+      </div>
+
+
+
+      <div class="two">
+
+        {% with messages = get_flashed_messages(category_filter=["description"]) %}
+        {% if messages %}
+        <ul class="flash">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+      </div>
+
+
+
+      <div class="one">
+        <label for="description">Description</label>
+      </div>
+
+      <div class="two">
+        {% if data %}
+        <textarea name="description" id="description" cols="10" rows="5">{{ data['description'] }}</textarea><br>
+        {% else %}
+        <textarea name="description" id="description" cols="10" rows="5"></textarea>
+        {% endif %}
+
+      </div>
+
+
+      <div class="two">
+
+
+        {% with messages = get_flashed_messages(category_filter=["price"]) %}
+        {% if messages %}
+        <ul class="flash">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+
+      </div>
+
+      <div class="one">
+
+        <label for="price">Price</label>
+
+      </div>
+
+      <div class="two">
+
+        {% if data %}
+        <input type="number" min="0"  id="price" name="price" value="{{data['price']}}">
+        {% else %}
+        <input type="number" min="0" id="price" name="price">
+        {% endif %}
+
+      </div>
+
+      <div class="two">
+        <button type="submit" style="display: block;">Submit</button>
+      </div>
+
+    </div>
+
+    </table>
+  </form>
+
+  </div>
+
+</body>
+
+</html>

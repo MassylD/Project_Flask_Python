@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title>Paintings Show - Red Belt</title>
+  <link href="/static/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- LEFT TITLE -->
+
+    <!-- BUTTON BLOCK -->
+    <div class="row">
+
+      <!-- STYLE REPORT BUTTON TO RIGHT -->
+
+      <div style="display: flex; flex:1; gap: 30px; justify-content: end;">
+        <a href="/add_painting">
+          Add Painting
+        </a>
+        <a href="/paintings">
+          Dashboard
+        </a>
+        <!-- LOGOUT BUTTON -->
+        <a href="/logout">
+          <input type="button" value="Logout">
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- BODY CONTAINER -->
+  <div class="container_vertical_left">
+    <!-- TITLE -->
+    <h1>{{ painting.title }}</h1>
+    <h4>Painted by {{ painting.user.last_name }} {{ painting.user.first_name }}</h4>
+    <h4>Description:</h4>
+    <p style="margin-left: 10px">{{ painting.description }}</p>
+    <br>
+    <h4>Price:</h4>
+    <p style="margin-left: 10px">${{ painting.price }}</p>
+  </div>
+
+
+
+</body>
+
+</html>

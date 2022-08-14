@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <title>Dashboard - Red Belt</title>
+  <link href="/static/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- LEFT TITLE -->
+
+    <!-- BUTTON BLOCK -->
+    <div class="row">
+      <h1>Welcome {{ user_.first_name }} {{ user_.last_name }}!</h1>
+
+      <!-- STYLE REPORT BUTTON TO RIGHT -->
+
+      <div style="display: flex; gap: 50px">
+        <a href="/add_painting">
+          Add Painting
+        </a>
+        <!-- LOGOUT BUTTON -->
+        <a href="/logout">
+          <input type="button" value="Logout">
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BODY CONTAINER -->
+  <div class="container_vertical_left-150">
+    <!-- TITLE -->
+    <p>Paintings</p>
+
+    <div class="container">
+      <!-- TABLE 2 X 2 -->
+      <table class="table_border">
+
+        {% if paintings %}
+        {% for painting in paintings %}
+        <tr>
+          <td>
+            <p>
+              <a href="/painting/{{ painting.id }}">
+                {{ painting.title }}
+              </a>
+
+              by {{ painting.user.first_name }} {{ painting.user.last_name }}
+
+              {% if painting.user.id == user_.id %}
+              <a href="/painting/{{ painting.id }}/delete">
+                delete
+              </a>
+              |
+              <a href="/painting/{{ painting.id }}/edit">
+                edit
+              </a>
+              {% endif %}
+
+            </p>
+
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+
+
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
